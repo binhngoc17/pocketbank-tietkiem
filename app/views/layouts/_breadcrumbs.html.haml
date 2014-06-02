@@ -1,0 +1,6 @@
+.breadcrumbs
+  .container
+    %ol.breadcrumb
+      - @breadcrumbs.each do |b|
+        %li
+          %a{:href => b[1]}= b[0]

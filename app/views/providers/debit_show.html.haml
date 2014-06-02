@@ -1,0 +1,38 @@
+= content_for(:breadcrumbs) do
+  :ruby
+    @breadcrumbs = [
+      ["Trang chủ", root_path],
+      ["Thẻ Debit", debits_path],
+      [@provider.name, provider_debits_path(@provider)],
+    ]
+  = render "layouts/breadcrumbs"
+
+#main-content.provider-page
+  .container
+    .row
+      .provider-content
+        .row.provider-info
+          .col-lg-12
+            .pull-wrapper.pull-left
+              .logo-box
+                %img.logo{:src => @provider.image}
+            .info-box
+              %h1
+                Thẻ Debit
+                = @provider.name
+              %h2
+                = @provider.name
+        .row.item-header
+          .col-lg-12
+            .type-header.col-product
+              Thẻ thanh toán quốc tế
+
+            .col-info
+              Phí rút tiền
+            .col-info
+              Phí thường niên
+            .col-info
+              Phí chuyển đổi ngoại tệ
+            .col-link
+              &nbsp;
+        = render :partial => "provider_debit_item", :collection => @debits, :as => :c

@@ -1,0 +1,48 @@
+- o = debit_item
+%section.product-item{:data => {:type => "debits", "item-id" => o.id}, :class => debit_tag_class(o, shortlist) }
+  .item-general.col-lg-9.col-md-9
+    %a.item-header{:href => "javascript:void(0)"}= line_break_name o.name
+    .item-summary
+      %img.product{:src => o.image}
+      %ul.description
+        - o.description.each_line do |line|
+          %li= markdown(line)
+      .clearfix
+  .col-lg-3.col-md-3
+    %button.btn.btn-provider{"data-href" => debit_redirect_path(o)} Website ngân hàng
+    .shortlist-adder{:class => shortlist ? "added" : ""}
+      %span.remove bỏ khỏi shortlist
+      %span.add thêm vào shortlist
+      .btn.btn-shortlist-toggle
+  .clearfix
+  %hr/
+  .toggle-box.col-lg-4.col-md-4
+    %a.fullview-toggle.pull-right.c-hidden{:href => "javascript:void(0)"}
+      .span.less Xem ít hơn
+      .span.more Xem thêm
+  .info-boxes.col-lg-8.col-md-8
+    .col-lg-4.col-md-4.info-box
+      .info-title
+        Phí rút tiền
+      .info-value
+        = n2currency o.domestic_internal_cash_withdrawal_fee, true
+      .info-desc
+        = o.domestic_external_cash_withdrawal_fee_description
+
+    .col-lg-4.col-md-4.info-box
+      .info-title
+        Phí thường niên
+      .info-value
+        = n2currency o.primary_card_annual_fee
+
+    .info-box.col-lg-4.col-md-4
+      .info-title
+        Phí chuyển đổi ngoại tệ
+      .info-value
+        = n2percent o.currency_exchange_fee, true
+      .info-desc
+        = o.currency_exchange_fee_desc
+
+  .clearfix
+%section.product-description.hidden
+  = render :partial => "shared/debit_description", :locals => { :o => o }

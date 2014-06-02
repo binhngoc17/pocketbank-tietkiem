@@ -1,0 +1,35 @@
+= search_form_for @qd do |f|
+  .col-lg-12
+    %h1 Thẻ Thanh Toán Quốc Tế
+    %h2 Loại thẻ sử dụng trực tiếp số dư trong tài khoản để giao dịch.
+
+    %h3 Tìm kiếm theo:
+  .clearfix.header-separator
+  .col-lg-6
+    %label.tooltipster{:title => "Ngân hàng phát hành thẻ"} Ngân hàng
+    = f.select :product_provider_id_in, Provider.order(:name).all.map { |p| [p.name, p.id] }, {:include_blank => true}, 
+      :multiple => true, :class => "chosen-select", :data => { placeholder: "Chọn ngân hàng"}
+  .col-lg-6
+    %label.tooltipster{:title => "Nếu bạn không chắc chắn về hạng thẻ mình cần, vui lòng để trống"} Hạng thẻ
+    = f.select :product_card_rank_eq_any, Product.card_rank.values.map { |c| [I18n.t(c, :scope => [:enum, :product, :card_rank]), c] },
+      {:include_blank => true}, :class => "chosen-select", :data => { placeholder: "Chọn hạng thẻ"}
+  .col-lg-6.col-lg-offset-6.action-box
+    = f.submit "Tìm kiếm", :class => "btn btn-search"
+  .clearfix
+  .col-lg-12.separator
+    %div{:style => "height: 2px; background-color: black; text-align: center"}
+      %span.hr-text
+        Hoặc
+= search_form_for @qd do |f|
+  .col-lg-12
+    %h3 Tìm kiếm theo đặc tính của thẻ:
+  .col-lg-6
+    %label.tooltipster{:title => "Các yếu tố giúp chúng tôi đưa ra kết quả so sánh phù hợp yêu cầu tìm kiếm của bạn"} Đặc tính của thẻ
+    %select{:name => "q[debit_features]", :class => "chosen-select", :data => { placeholder: "Chọn đặc tính của thẻ"}}
+      %option{:value => ""}
+      %option{:value => "recommended"} Thẻ khuyên dùng
+      %option{:value => "promotion"} Thẻ đang có ưu đãi
+      %option{:value => "currency_exchange_fee"} Phí chuyển đổi ngoại tệ thấp
+  .col-lg-6.action-box
+    = f.submit "Tìm kiếm", :class => "btn btn-search"
+  .clearfix

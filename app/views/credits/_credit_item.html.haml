@@ -1,0 +1,46 @@
+- o = credit_item
+%section.product-item{:data => {:type => "credits", "item-id" => o.id}, :class => credit_tag_class(o, shortlist) }
+  .item-general.col-lg-9.col-md-9
+    %a.item-header{:href => "javascript:void(0)"}= line_break_name o.name
+    .item-summary
+      %img.product{:src => o.image}
+      %ul.description
+        - o.description.each_line do |line|
+          %li= markdown(line)
+      .clearfix
+  .col-lg-3.col-md-3
+    %button.btn.btn-provider{"data-href" => credit_redirect_path(o)} Website ngân hàng
+    .shortlist-adder{:class => shortlist ? "added" : ""}
+      %span.remove bỏ khỏi shortlist
+      %span.add thêm vào shortlist
+      .btn.btn-shortlist-toggle
+  .clearfix
+  %hr/
+  .toggle-box.col-lg-4.col-md-4
+    %a.fullview-toggle.pull-right.c-hidden{:href => "javascript:void(0)"}
+      .span.less Xem ít hơn
+      .span.more Xem thêm
+  .info-boxes.col-lg-8.col-md-8
+    .info-box.col-lg-4.col-md-4
+      .info-title
+        Lãi suất
+      .info-value
+        = n2percent o.finance_charge_per_year, true
+      .info-desc
+
+    .col-lg-4.col-md-4.info-box
+      .info-title
+        Phí thường niên
+      .info-value
+        = n2currency o.primary_card_annual_fee
+
+    .col-lg-4.col-md-4.info-box
+      .info-title
+        Phí đổi ngoại tệ
+      .info-value
+        = n2percent o.currency_exchange_fee, true
+      .info-desc
+        = o.currency_exchange_fee_desc
+  .clearfix
+%section.product-description.hidden
+  = render :partial => "shared/credit_description", :locals => {:o => o}

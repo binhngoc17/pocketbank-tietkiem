@@ -1,0 +1,14 @@
+%ul.item-info
+  - if o.reward_point && !o.reward_point.blank?
+    %li #{Credit.human_attribute_name(:reward_point)}: #{o.reward_point}
+  - if o.interest_free_day
+    %li #{Credit.human_attribute_name(:interest_free_day)}: #{o.interest_free_day} ngày
+  - if o.domestic_external_cash_withdrawal_fee
+    %li #{Product.human_attribute_name(:domestic_external_cash_withdrawal_fee)}: #{n2currency o.domestic_external_cash_withdrawal_fee_description}
+  - if o.issuance_condition && !o.issuance_condition.blank?
+    %li 
+      #{Product.human_attribute_name(:issuance_condition)}:
+      %ul.issuance-condition
+        - o.issuance_condition.each_line do |line|
+          %li= markdown(line)
+

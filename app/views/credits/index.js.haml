@@ -1,0 +1,5 @@
+$('.credits').append('#{escape_javascript(render partial: "credit_item", :collection => @credits, :locals => { :shortlist => false })}');
+$('a.btn-next-page').attr('href', '#{url_for(params.merge(:page => @credits.next_page))}');
+
+- unless @credits.next_page
+  $('a.btn-next-page').remove();

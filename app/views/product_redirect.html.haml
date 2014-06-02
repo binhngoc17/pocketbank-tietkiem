@@ -1,0 +1,18 @@
+.redirect-page
+  .container
+    .row
+      .col-lg-10.col-lg-offset-1
+        %h1 Bạn đang được chuyển tới trang sản phẩm...
+    .row
+      .col-lg-6.col-lg-offset-3
+        .pull-wrapper.pull-left
+          .logo-box
+            %img.logo{:src => image_path("logo.png")}
+        .pull-wrapper.pull-left
+          .progress-box
+            %img.progress{:src => image_path("progress.gif")}
+        .pull-wrapper.pull-left
+          .logo-box
+            %img.logo{:src => @product.image}
+= content_for :redirect_to do
+  = @product.link

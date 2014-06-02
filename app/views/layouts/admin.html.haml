@@ -1,0 +1,40 @@
+!!!
+%html
+  %head
+    %meta{:charset => "utf-8"}/
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
+    %link{:href => "img/favicon.png", :rel => "shortcut icon"}/
+    %title= content_for?(:title) ? yield(:title) : 'Pocket Bank'
+    %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'Pocket Bank'}"}
+    = stylesheet_link_tag "admin/main", media: "all", "data-turbolinks-track" => true
+    = csrf_meta_tags
+    / HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries
+    /[if lt IE 9]
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+
+  %body{ :data => { :action => action_name, :controller => controller_name } }
+    %section#container
+      / header start
+      %header.header.white-bg
+        = render 'layouts/admin/navigation'
+      / header end
+      / sidebar start
+      %aside
+        = render "layouts/admin/sidebar"
+      / sidebar end
+      / main content start
+      %section#main-content{:role => "main"}
+        %section.wrapper
+          = render "layouts/admin/flash"
+          = yield
+      / main content end
+      / footer start
+      %footer.site-footer
+        .text-center
+          2013 &copy; FlatLab by VectorLab.
+          %a.go-top{:href => "#"}
+            %i.fa.fa-angle-up
+      / footer end
+    / js placed at the end of the document so the pages load faster
+    = javascript_include_tag "admin/main", "data-turbolinks-track" => true

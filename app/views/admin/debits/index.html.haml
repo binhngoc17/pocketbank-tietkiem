@@ -1,0 +1,7 @@
+.row
+  .col-lg-12
+    #datatable.adv-table{ :data => { :count => Debit.count } }
+
+.row
+  .col-lg-12
+    = link_to "Create Debit", new_admin_debit_path, :class => "btn btn-primary"

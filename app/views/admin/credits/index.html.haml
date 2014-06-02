@@ -1,0 +1,7 @@
+.row
+  .col-lg-12
+    #datatable.adv-table{ :data => { :count => Credit.count } }
+
+.row
+  .col-lg-12
+    = link_to "Create Credit", new_admin_credit_path, :class => "btn btn-primary"

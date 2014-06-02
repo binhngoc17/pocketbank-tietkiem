@@ -1,0 +1,24 @@
+!!!
+%html
+  %head
+    %meta{:charset => "utf-8"}/
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
+    %link{:href => "img/favicon.png", :rel => "shortcut icon"}/
+    %title= content_for?(:title) ? yield(:title) : 'Pocket Bank'
+    %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'Pocket Bank'}"}
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+    = csrf_meta_tags
+    / HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries
+    /[if lt IE 9]
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+
+  %body.login-body
+    .container
+      - if flash[:alert]
+        .alert.alert-danger{:style => "margin: 50px"}
+          = flash[:alert]
+
+      = yield
+    / js placed at the end of the document so the pages load faster
+    = javascript_include_tag "application", "data-turbolinks-track" => true

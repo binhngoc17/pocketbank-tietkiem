@@ -1,0 +1,7 @@
+.row
+  .col-lg-12
+    #datatable.adv-table{ :data => { :count => User.count } }
+
+.row
+  .col-lg-12
+    = link_to "Create User", new_admin_user_path, :class => "btn btn-primary"

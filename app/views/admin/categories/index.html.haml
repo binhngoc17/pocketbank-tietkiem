@@ -1,0 +1,7 @@
+.row
+  .col-lg-12
+    #datatable.adv-table{ :data => { :count => Category.count } }
+
+.row
+  .col-lg-12
+    = link_to "Create Category", new_admin_category_path, :class => "btn btn-primary"

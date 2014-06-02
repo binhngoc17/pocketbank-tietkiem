@@ -1,0 +1,183 @@
+.sidebar-toggle-box
+  .fa.fa-bars.tooltips{"data-original-title" => "Toggle Navigation", "data-placement" => "right"}
+/ logo start
+%a.logo{:href => "index.html"}
+  Flat
+  %span lab
+/ logo end
+#top_menu.nav.notify-row
+  / notification start
+  %ul.nav.top-menu
+    / settings start
+    %li.dropdown
+      %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+        %i.fa.fa-tasks
+        %span.badge.bg-success 6
+      %ul.dropdown-menu.extended.tasks-bar
+        .notify-arrow.notify-arrow-green
+        %li
+          %p.green You have 6 pending tasks
+        %li
+          %a{:href => "#"}
+            .task-info
+              .desc Dashboard v1.3
+              .percent 40%
+            .progress.progress-striped
+              .progress-bar.progress-bar-success{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "40", :role => "progressbar", :style => "width: 40%"}
+                %span.sr-only 40% Complete (success)
+        %li
+          %a{:href => "#"}
+            .task-info
+              .desc Database Update
+              .percent 60%
+            .progress.progress-striped
+              .progress-bar.progress-bar-warning{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "60", :role => "progressbar", :style => "width: 60%"}
+                %span.sr-only 60% Complete (warning)
+        %li
+          %a{:href => "#"}
+            .task-info
+              .desc Iphone Development
+              .percent 87%
+            .progress.progress-striped
+              .progress-bar.progress-bar-info{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "20", :role => "progressbar", :style => "width: 87%"}
+                %span.sr-only 87% Complete
+        %li
+          %a{:href => "#"}
+            .task-info
+              .desc Mobile App
+              .percent 33%
+            .progress.progress-striped
+              .progress-bar.progress-bar-danger{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "80", :role => "progressbar", :style => "width: 33%"}
+                %span.sr-only 33% Complete (danger)
+        %li
+          %a{:href => "#"}
+            .task-info
+              .desc Dashboard v1.3
+              .percent 45%
+            .progress.progress-striped.active
+              .progress-bar{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "45", :role => "progressbar", :style => "width: 45%"}
+                %span.sr-only 45% Complete
+        %li.external
+          %a{:href => "#"} See All Tasks
+    / settings end
+    / inbox dropdown start
+    %li#header_inbox_bar.dropdown
+      %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+        %i.fa.fa-envelope-o
+        %span.badge.bg-important 5
+        %ul.dropdown-menu.extended.inbox
+          .notify-arrow.notify-arrow-red
+          %li
+            %p.red You have 5 new messages
+          %li
+            %a{:href => "#"}
+              %span.photo
+                %img{:alt => "avatar", :src => image_url("avatar-mini.jpg")}/
+              %span.subject
+                %span.from Jonathan Smith
+                %span.time Just now
+              %span.message
+                Hello, this is an example msg.
+          %li
+            %a{:href => "#"}
+              %span.photo
+                %img{:alt => "avatar", :src => image_url("avatar-mini2.jpg")}/
+              %span.subject
+                %span.from Jhon Doe
+                %span.time 10 mins
+              %span.message
+                Hi, Jhon Doe Bhai how are you ?
+          %li
+            %a{:href => "#"}
+              %span.photo
+                %img{:alt => "avatar", :src => image_url("avatar-mini3.jpg")}/
+              %span.subject
+                %span.from Jason Stathum
+                %span.time 3 hrs
+              %span.message
+                This is awesome dashboard.
+          %li
+            %a{:href => "#"}
+              %span.photo
+                %img{:alt => "avatar", :src => image_url("avatar-mini4.jpg")}/
+              %span.subject
+                %span.from Jondi Rose
+                %span.time Just now
+              %span.message
+                Hello, this is metrolab
+          %li
+            %a{:href => "#"} See all messages
+          / inbox dropdown end
+    / notification dropdown start
+    %li#header_notification_bar.dropdown
+      %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+        %i.fa.fa-bell-o
+        %span.badge.bg-warning 7
+        %ul.dropdown-menu.extended.notification
+          .notify-arrow.notify-arrow-yellow
+          %li
+            %p.yellow You have 7 new notifications
+          %li
+            %a{:href => "#"}
+              %span.label.label-danger
+                %i.fa.fa-bolt
+              Server #3 overloaded.
+              %span.small.italic 34 mins
+          %li
+            %a{:href => "#"}
+              %span.label.label-warning
+                %i.fa.fa-bell
+              Server #10 not respoding.
+              %span.small.italic 1 Hours
+          %li
+            %a{:href => "#"}
+              %span.label.label-danger
+                %i.fa.fa-bolt
+              Database overloaded 24%.
+              %span.small.italic 4 hrs
+          %li
+            %a{:href => "#"}
+              %span.label.label-success
+                %i.fa.fa-plus
+              New user registered.
+              %span.small.italic Just now
+          %li
+            %a{:href => "#"}
+              %span.label.label-info
+                %i.fa.fa-bullhorn
+              Application error.
+              %span.small.italic 10 mins
+          %li
+            %a{:href => "#"} See all notifications
+        / notification dropdown end
+    / notification end
+.top-nav
+  %ul.nav.pull-right.top-menu
+    %li
+      %input.form-control.search{:placeholder => " Search", :type => "text"}/
+    / user login dropdown start
+    %li.dropdown
+      %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+        %img{:alt => "", :src => image_url("avatar1_small.jpg")}/
+        %span.username Jhon Doue
+        %b.caret
+      %ul.dropdown-menu.extended.logout
+        .log-arrow-up
+        %li
+          %a{:href => "#"}
+            %i.fa.fa-suitcase>
+            Profile
+        %li
+          %a{:href => "#"}
+            %i.fa.fa-cog
+            Settings
+        %li
+          %a{:href => "#"}
+            %i.fa.fa-bell-o
+            Notification
+        %li
+          = link_to destroy_user_session_url, :method => :delete do
+            %i.fa.fa-key
+            Log Out
+    / user login dropdown end
+  / search &amp; user info end

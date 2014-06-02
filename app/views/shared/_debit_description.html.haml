@@ -1,0 +1,9 @@
+%ul.item-info
+  - if o.issuance_fee
+    %li #{Product.human_attribute_name(:issuance_fee)}: #{n2currency o.issuance_fee}
+  - if o.issuance_condition && !o.issuance_condition.blank?
+    %li 
+      #{Product.human_attribute_name(:issuance_condition)}:
+      %ul.issuance-condition
+        - o.issuance_condition.each_line do |line|
+          %li= markdown(line)

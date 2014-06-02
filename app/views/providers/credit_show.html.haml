@@ -1,0 +1,37 @@
+= content_for(:breadcrumbs) do
+  :ruby
+    @breadcrumbs = [
+      ["Trang chủ", root_path],
+      ["Thẻ Credit", credits_path],
+      [@provider.name, provider_credits_path(@provider)],
+    ]
+  = render "layouts/breadcrumbs"
+
+#main-content.provider-page
+  .container
+    .row
+      .provider-content
+        .row.provider-info
+          .col-lg-12
+            .pull-wrapper.pull-left
+              .logo-box
+                %img.logo{:src => @provider.image}
+            .info-box
+              %h1
+                Thẻ Credit
+                = @provider.name
+              %h2
+                = @provider.name
+        .row.item-header
+          .col-lg-12
+            .type-header.col-product
+              Thẻ tín dụng
+            .col-info
+              Lãi suất
+            .col-info
+              Phí thường niên
+            .col-info
+              Phí đổi ngoại tệ
+            .col-link
+              &nbsp;
+        = render :partial => "provider_credit_item", :collection => @credits, :as => :c

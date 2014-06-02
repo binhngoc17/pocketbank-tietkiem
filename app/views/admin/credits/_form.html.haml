@@ -1,0 +1,40 @@
+%section.panel
+  %header.panel-heading
+    Thẻ Tín Dụng
+  .panel-body
+    .form
+      = simple_form_for [:admin, @credit], :html => { :class => "form-horizontal tasi-form" } do |f|
+        = f.input :name, :as => :text
+        = f.input :image
+        = f.input :link
+        = f.input :provider_id, :label => I18n.t(:provider, :scope => [:activerecord, :attributes, :product]), 
+          :as => :select, :collection => Provider.order(:name).map { |p| [p.name, p.id] }, :include_blank => false
+        = f.input :brand, :include_blank => false
+        = f.input :recommended, :as => :boolean
+        = f.input :has_promotion, :as => :boolean
+        = f.input :description, :as => :text
+        = f.input :primary_card_annual_fee
+        = f.input :sub_card_annual_fee
+        = f.input :issuance_fee
+        = f.input :domestic_internal_cash_withdrawal_fee
+        = f.input :domestic_internal_cash_withdrawal_fee_description, :as => :text
+        = f.input :domestic_external_cash_withdrawal_fee
+        = f.input :domestic_external_cash_withdrawal_fee_description, :as => :text
+        = f.input :issuance_condition, :as => :text
+        = f.input :reward_point, :as => :text
+        = f.input :reward_card
+        = f.input :cash_back_rate_description, :as => :text
+        = f.input :finance_charge_per_year
+        = f.input :advance_fee_at_ATM
+        = f.input :interest_free_day
+        = f.input :credit_limit
+        = f.input :expiry_period
+        = f.input :late_charge
+        = f.input :cash_advance_fee
+        = f.input :currency_exchange_fee
+        = f.input :currency_exchange_fee_desc, :as => :text
+        = f.input :card_rank,
+          :collection => Product.card_rank.values.map { |c| [I18n.t(c, :scope => [:enum, :product, :card_rank]), c] },
+          :include_blank => false
+
+        = f.button :submit, :class => "btn-danger"

@@ -1,0 +1,7 @@
+.row
+  .col-lg-12
+    #datatable.adv-table{ :data => { :count => Provider.count } }
+
+.row
+  .col-lg-12
+    = link_to "Create Provider", new_admin_provider_path, :class => "btn btn-primary"

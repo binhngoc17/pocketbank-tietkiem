@@ -1,0 +1,32 @@
+-# navigation styled for Bootstrap 3.0
+/ header start
+%header.header.white-bg
+  .navbar-header.container
+    %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+      %span.fa.fa-bar
+      %span.fa.fa-bar
+      %span.fa.fa-bar
+    / logo start
+    %a.logo{:href => root_path}
+      = precede "Tietkiem" do
+        %span .me
+    / logo end
+    .horizontal-menu.navbar-collapse.collapse
+      %ul.nav.navbar-nav
+        %li
+          %a{:href => "#"} Sản phẩm thẻ
+          %ul.sub-nav
+            %li 
+              = link_to "Thẻ Tín Dụng", credits_path
+            %li 
+              = link_to "Thẻ Thanh Toán Quốc Tế (Debit)", debits_path
+    /
+      .top-nav
+        %ul.nav.pull-right.top-menu
+          %li
+            %button.btn.sign-in-btn
+              Dang ki
+          %li
+            %button.btn.sign-up-btn
+              Dang nhap
+/ header end

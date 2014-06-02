@@ -1,0 +1,42 @@
+%section.panel
+  %header.panel-heading
+    Thẻ Thanh Toán Quốc Tế
+
+  .panel-body
+    .form
+      = simple_form_for [:admin, @debit], :html => { :class => "form-horizontal tasi-form" } do |f|
+        = f.input :name, :as => :text
+        = f.input :image
+        = f.input :link
+        = f.input :provider_id, :label => I18n.t(:provider, :scope => [:activerecord, :attributes, :product]), 
+          :as => :select, :collection => Provider.order(:name).map { |p| [p.name, p.id] }, :include_blank => false
+        = f.input :brand, :include_blank => false
+        = f.input :recommended, :as => :boolean
+        = f.input :has_promotion, :as => :boolean
+        = f.input :description, :as => :text
+        = f.input :currency_exchange_fee
+        = f.input :currency_exchange_fee_desc, :as => :text
+        = f.input :primary_card_annual_fee
+        = f.input :sub_card_annual_fee
+        = f.input :issuance_fee
+        = f.input :domestic_internal_cash_withdrawal_fee
+        = f.input :domestic_internal_cash_withdrawal_fee_description, :as => :text
+        = f.input :domestic_external_cash_withdrawal_fee
+        = f.input :domestic_external_cash_withdrawal_fee_description, :as => :text
+        = f.input :issuance_condition, :as => :text
+        = f.input :internal_transaction_fee
+        = f.input :internal_transaction_fee_description, :as => :text
+        = f.input :external_transaction_fee
+        = f.input :external_transaction_fee_description, :as => :text
+        = f.input :daily_withdrawal_limit
+        = f.input :withdrawal_limit
+        = f.input :daily_expense_limit
+        = f.input :expense_limit
+        = f.input :daily_transaction_limit
+        = f.input :transaction_limit
+        = f.input :card_rank, :as => :select, 
+          :collection => Product.card_rank.values.map { |c| [I18n.t(c, :scope => [:enum, :product, :card_rank]), c] },
+          :include_blank => false
+
+
+        = f.button :submit, :class => "btn-danger"

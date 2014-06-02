@@ -1,0 +1,102 @@
+#main-content
+  .container
+    %span.search-count.pull-right
+      = @credits_count
+      thẻ được tìm thấy
+    %h1
+      Thẻ Tín Dụng
+    %hr/
+    = search_form_for @q do |f|
+      .row
+        .col-lg-9.col-md-9
+          %section.compare-panel
+            .header-wrapper
+              .panel-heading
+                .sort-by.pull-right.btn
+                  %span.pull-right
+                    &#9660;
+                  = I18n.t(:name, :scope => [:credit, :sort]) if !@q.sorts.first
+                  = I18n.t("#{@q.sorts.first.name}".to_sym, :scope => [:credit, :sort]) if @q.sorts.first
+
+                  %ul.sort-by-selections
+                    - p = params[:q] || {}
+                    %li= link_to "Tên ngân hàng A - Z", url_for(params.merge(:q => p.merge(:s => "product_name asc")))
+                    %li= link_to "Lãi suất tốt nhất", url_for(params.merge(:q => p.merge(:s => "finance_charge_per_year asc")))
+                    %li= link_to "Phí thường niên tốt nhất", url_for(params.merge(:q => p.merge(:s => "product_primary_card_annual_fee asc")))
+                    %li= link_to "Phí đổi ngoại tệ tốt nhất", url_for(params.merge(:q => p.merge(:s => "product_currency_exchange_fee asc")))
+
+                %span.sort-title.pull-right Sắp xếp theo: 
+                .clearfix
+              .panel-sub-header.shortlist-indicator
+                Bạn có
+                %span.hightlight{:data => { :count => @credit_shortlist.count }} #{@credit_shortlist.count} thẻ
+                trong shortlist
+                %a.pull-right{:href => "#shortlist"} Xem shortlist
+            #shortlist
+              = render :partial => "credit_item", :collection => @credit_shortlist, :locals => { :shortlist => true }
+            .credits
+              = render :partial => "credit_item", :collection => @credits, :locals => { :shortlist => false }
+            #pager
+              = link_to 'Xem thêm kết quả', url_for(params.merge(:page => @credits.next_page)), 
+                :class => 'btn btn-info btn-next-page', :remote => true if @credits.next_page
+
+        .col-lg-3.col-md-3.filter-container
+          %section.filter-panel
+            .panel-heading
+              Bộ lọc nâng cao
+            %section.panel-section
+              1. Các đặc tính của thẻ
+            .filter-body.checkbox-filter
+              %ul.check-filter
+                %li.recommended-label
+                  Thẻ khuyên dùng
+                  = check_box_tag('q[product_recommended_eq]', true, f.object.product_recommended_eq)
+                  %label.fake-chk
+                %li.has-promotion-label
+                  Thẻ đang có ưu đãi
+                  = check_box_tag('q[product_has_promotion_eq]', true, f.object.product_has_promotion_eq)
+                  %label.fake-chk
+                %li 
+                  Phí chuyển đổi ngoại tệ thấp
+                  = check_box_tag('q[product_currency_exchange_fee_lt]', 0.025, f.object.product_currency_exchange_fee_lt)
+                  %label.fake-chk
+                %li 
+                  Có chương trình điểm thưởng
+                  = check_box_tag('q[reward_card_eq]', true, f.object.reward_card_eq)
+                  %label.fake-chk
+            %section.panel-section
+              2. Hạng thẻ
+            .filter-body.checkbox-filter
+              %ul.check-filter
+                - Product.card_rank.values.each do |rank|
+                  %li 
+                    = I18n.t(rank, :scope => [:enum, :product, :card_rank])
+                    = check_box_tag('q[product_card_rank_eq_any][]', rank, (f.object.product_card_rank_eq_any || []).include?(rank))
+                    %label.fake-chk
+            %section.panel-section
+              3. Thẻ thuộc hiệp hội thẻ
+            .filter-body.checkbox-filter
+              %ul.check-filter
+                - Credit.brand.values.each do |brand|
+                  %li 
+                    = I18n.t(brand, :scope => [:enum, :product, :brand])
+                    = check_box_tag('q[product_brand_eq_any][]', brand, (f.object.product_brand_eq_any || []).include?(brand))
+                    %label.fake-chk
+            %section.panel-section
+              4. Ngân hàng
+            .filter-body.selectbox-filter
+              = f.select :product_provider_id_in, Provider.order(:name).all.map { |p| [p.name, p.id] }, {:include_blank => false}, 
+                :multiple => true, :class => 'chosen-select', :data => { placeholder: "Chọn một hay nhiều ngân hàng" }
+            .action-box
+              %input.pull-left.btn.btn-search{:type => "submit", :value => "Tìm thẻ"}
+              %a.pull-right.btn.btn-reset{:href => credits_path} Reset
+              .clearfix
+                
+= content_for(:breadcrumbs) do
+  :ruby
+    @breadcrumbs = [
+      ["Trang chủ", root_path],
+      ["Thẻ Credit", credits_path]
+    ]
+  = render "layouts/breadcrumbs"
+

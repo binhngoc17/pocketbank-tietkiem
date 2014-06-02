@@ -1,0 +1,34 @@
+:ruby
+  menu = [
+    ["Dashboard", "dashboards", admin_dashboard_path, "fa-dashboard"],
+    ["User", "users", admin_users_path, "fa-user"],
+    ["Category", "categories", admin_categories_path, "fa-folder-open"],
+    ["Provider", "providers", admin_providers_path, "fa-folder-open"],
+    ["Credit", "credits", admin_credits_path, "fa-folder-open"],
+    ["Debits", "debits", admin_debits_path, "fa-folder-open"],
+  ]
+#sidebar.nav-collapse
+  / sidebar menu start
+  %ul#nav-accordion.sidebar-menu
+    - menu.each do |item|
+      %li
+        %a{:href => item[2], :class => (controller_name == item[1]) ? "active" : ""}
+          %i.fa{ :class => item[3] }
+          %span= item[0]
+
+  / sidebar menu end
+
+/
+  %li.sub-menu
+    %a{:href => "javascript:;"}
+      %i.fa{ :class => "item[3]" }
+      %span Layouts
+    %ul.sub
+      %li
+        %a{:href => "boxed_page.html"} Boxed Page
+      %li
+        %a{:href => "horizontal_menu.html"} Horizontal Menu
+      %li
+        %a{:href => "language_switch_bar.html"} Language Switch Bar
+      %li
+        %a{:href => "email_template.html", :target => "_blank"} Email Template

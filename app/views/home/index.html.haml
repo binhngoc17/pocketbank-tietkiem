@@ -1,0 +1,76 @@
+#main-content
+  .home-banner
+    .container
+      .row
+        .col-lg-6.home-filter
+          %span.previous <
+          %span.next >
+          %ul.category-chooser
+            %li.selected{"data-target" => ".credit"}
+              Thẻ tín dụng
+            %li{"data-target" => ".debit"}
+              Thẻ thanh toán quốc tế
+          .clearfix
+          .filter-boxes
+            .filter-box.credit.active
+              = render "credit_filter_box"
+            .filter-box.debit
+              = render "debit_filter_box"
+        .col-lg-6.heading
+          %h1
+            Tìm kiếm sản phẩm tài chính
+            %span.highlight chính xác và thuận tiện
+          %h2
+            Tiết kiệm thời gian, tiết kiệm chi phí. 
+            %br/
+            Tietkiem.me là công cụ 
+            %span.highlight hoàn toàn miễn phí
+            giúp bạn so sánh và tìm ra 
+            %br/
+            sản phẩm tài chính phù hợp với lợi nhuận cao nhất.   
+  .introduction
+    .container
+      .row
+        .col-lg-12
+          %h1
+            %span.highlight Tại Tietkiem.me,
+            chúng tôi giúp bạn
+      .row.features
+        .col-lg-4
+          %span.ordinal 01
+          .feature
+            %h3.title So sánh sản phẩm tài chính
+            .description
+              Chúng tôi thực hiện so sánh trên #{Product.count} sản phẩm của #{Provider.count} ngân hàng để giúp khách hàng tìm ra giải pháp tài chính tối ưu nhất.
+              %br/
+        .col-lg-4
+          %span.ordinal 02
+          .feature
+            %h3.title Cập nhật thông tin
+            .description
+              Thông tin được liên tục cập nhật nhằm cung cấp nhanh nhất những ưu đãi mới đến người dùng.
+              %br/
+        .col-lg-4
+          %span.ordinal 03
+          .feature
+            %h3.title Tiết kiệm chi phí
+            .description
+              Tietkiem.me giúp bạn tiết kiệm thời gian, công sức và dễ dàng tìm ra sản phẩm tài chính đem lại lợi nhuận cao nhất và chi phí thấp nhất.
+              %br/
+  .subscription
+    .container
+      .row
+        .col-lg-12
+          %h1
+            Chúng tôi cập nhật thông tin khuyến mại theo 
+            %span.highlight các loại thẻ 24/24
+          %form.form-inline
+            .form-group.email
+              %input.form-control{ :type => "email", :placeholder => "Email của bạn" }
+            .form-group.name
+              %input.form-control{ :type => "text", :placeholder => "Tên của bạn" }
+            %button.btn{ :type => "submit" } Đăng ký nhận tin
+
+            
+
+

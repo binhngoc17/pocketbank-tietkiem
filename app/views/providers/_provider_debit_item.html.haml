@@ -1,0 +1,31 @@
+.row.item-row
+  .col-lg-12
+    .col-product
+      %img.product{:src => c.image}
+      %a.product-name{:href => "#"}= c.name
+
+      .toggle-box
+        %a.fullview-toggle.pull-right.c-hidden{:href => "javascript:void(0)"}
+          .span.less Xem ít hơn
+          .span.more Xem thêm
+    .col-info
+      .info-value
+        = n2currency c.domestic_external_cash_withdrawal_fee, true
+      .info-desc
+        = c.domestic_external_cash_withdrawal_fee_description
+    .col-info
+      .info-value
+        = n2currency c.primary_card_annual_fee
+    .col-info
+      .info-value
+        = n2percent c.currency_exchange_fee, true
+      .info-desc
+        = c.currency_exchange_fee_desc
+    .col-link
+      %button.btn.btn-provider{"data-href" => debit_redirect_path(c)} Website ngân hàng
+.row.product-description.hidden
+  %ul.description
+    - c.description.each_line do |line|
+      %li= markdown(line)
+  .clearfix
+  = render :partial => "shared/debit_description", :locals => { :o => c }

@@ -1,0 +1,8 @@
+%section.panel
+  %header.panel-heading
+    Category
+  .panel-body
+    .form
+      = simple_form_for [:admin, @category], :html => { :class => "form-horizontal tasi-form" } do |f|
+        = f.input :name
+        = f.button :submit, :class => "btn-danger"

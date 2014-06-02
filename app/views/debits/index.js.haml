@@ -1,0 +1,5 @@
+$('.debits').append('#{escape_javascript(render partial: "debit_item", :collection => @debits, :locals => { :shortlist => false })}');
+$('a.btn-next-page').attr('href', '#{url_for(params.merge(:page => @debits.next_page))}');
+
+- unless @debits.next_page
+  $('a.btn-next-page').remove();

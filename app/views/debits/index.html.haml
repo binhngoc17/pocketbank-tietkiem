@@ -1,0 +1,97 @@
+#main-content
+  .container
+    %span.search-count.pull-right
+      = @debits_count
+      thẻ được tìm thấy
+    %h1
+      Thẻ Thanh Toán Quốc Tế (Debit)
+    %hr/
+    = search_form_for @q do |f|
+      .row
+        .col-lg-9.col-md-9
+          %section.compare-panel
+            .header-wrapper
+              .panel-heading
+                .sort-by.pull-right.btn
+                  = I18n.t(:name, :scope => [:debit, :sort]) if !@q.sorts.first
+                  = I18n.t("#{@q.sorts.first.name}".to_sym, :scope => [:debit, :sort]) if @q.sorts.first
+                  %span.pull-right
+                    &#9660;
+                  %ul.sort-by-selections
+                    - p = params[:q] || {}
+                    %li= link_to "Tên ngân hàng A - Z", url_for(params.merge(:q => p.merge(:s => "product_name asc")))
+                    %li= link_to "Phí đổi ngoại tệ tốt nhất", url_for(params.merge(:q => p.merge(:s => "product_currency_exchange_fee asc")))
+                    %li= link_to "Phí rút tiền tốt nhất", url_for(params.merge(:q => p.merge(:s => "product_domestic_external_cash_withdrawal_fee asc")))
+                    %li= link_to "Phí thường niên tốt nhất", url_for(params.merge(:q => p.merge(:s => "product_primary_card_annual_fee asc")))
+                %span.sort-title.pull-right Sắp xếp theo: 
+                .clearfix
+              .panel-sub-header.shortlist-indicator
+                Bạn có
+                %span.hightlight{:data => { :count => @debit_shortlist.count }} #{@debit_shortlist.count} thẻ
+                trong shortlist
+                %a.pull-right{:href => "#shortlist"} Xem shortlist
+            #shortlist
+              = render :partial => "debit_item", :collection => @debit_shortlist, :locals => { :shortlist => true }
+            .debits
+              = render :partial => "debit_item", :collection => @debits, :locals => { :shortlist => false }
+            #pager
+              = link_to 'Xem thêm kết quả', url_for(params.merge(:page => @debits.next_page)), 
+                :class => 'btn btn-info btn-next-page', :remote => true if @debits.next_page
+
+        .col-lg-3.col-md-3.filter-container
+          %section.filter-panel
+            .panel-heading
+              Bộ lọc nâng cao
+            %section.panel-section
+              1. Các đặc tính của thẻ
+            .filter-body.checkbox-filter
+              %ul.check-filter
+                %li.recommended-label
+                  Thẻ khuyên dùng
+                  = check_box_tag('q[product_recommended_eq]', true, f.object.product_recommended_eq)
+                  %label.fake-chk
+                %li.has-promotion-label
+                  Thẻ đang có ưu đãi
+                  = check_box_tag('q[product_has_promotion_eq]', true, f.object.product_has_promotion_eq)
+                  %label.fake-chk
+                %li 
+                  Phí chuyển đổi ngoại tệ thấp
+                  = check_box_tag('q[product_currency_exchange_fee_lt]', 0.025, f.object.product_currency_exchange_fee_lt)
+                  %label.fake-chk
+            %section.panel-section
+              2. Hạng thẻ
+            .filter-body.checkbox-filter
+              %ul.check-filter
+                - Product.card_rank.values.each do |rank|
+                  %li 
+                    = I18n.t(rank, :scope => [:enum, :product, :card_rank])
+                    = check_box_tag('q[product_card_rank_eq_any][]', rank, (f.object.product_card_rank_eq_any || []).include?(rank))
+                    %label.fake-chk
+            %section.panel-section
+              3. Thẻ thuộc hiệp hội thẻ
+            .filter-body.checkbox-filter
+              %ul.check-filter
+                - Debit.brand.values.each do |brand|
+                  %li 
+                    = I18n.t(brand, :scope => [:enum, :product, :brand])
+                    = check_box_tag('q[product_brand_eq_any][]', brand, (f.object.product_brand_eq_any || []).include?(brand))
+                    %label.fake-chk
+            %section.panel-section
+              4. Ngân hàng
+            .filter-body.selectbox-filter
+              = f.select :product_provider_id_in, Provider.order(:name).all.map { |p| [p.name, p.id] }, {:include_blank => false},
+                :multiple => true, :class => 'chosen-select', :data => { :placeholder => "Chọn một hay nhiều ngân hàng" }
+            .action-box
+              %input.pull-left.btn.btn-search{:type => "submit", :value => "Tìm thẻ"}
+              %a.pull-right.btn.btn-reset{:href => debits_path} Reset
+              .clearfix
+
+
+= content_for(:breadcrumbs) do
+  :ruby
+    @breadcrumbs = [
+      ["Trang chủ", root_path],
+      ["Thẻ Debit", debits_path]
+    ]
+  = render "layouts/breadcrumbs"
+

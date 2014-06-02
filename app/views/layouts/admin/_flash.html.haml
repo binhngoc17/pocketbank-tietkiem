@@ -1,0 +1,7 @@
+- unless flash[:notice].blank?
+  .row
+    .col-lg-12
+      .alert.alert-success.fade.in
+        %button.close.close-sm{"data-dismiss" => "alert", type: "button"}
+          %i.fa.fa-times
+        = flash[:notice]

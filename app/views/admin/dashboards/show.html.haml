@@ -1,0 +1,183 @@
+%section.wrapper
+  / page start
+  .row
+    .col-lg-12
+      / breadcrumbs start
+      %ul.breadcrumb
+        %li
+          %a{:href => "#"}
+            %i.fa.fa-home
+            Home
+        %li
+          %a{:href => "#"} Library
+        %li.active Data
+      / breadcrumbs end
+  .row
+    .col-lg-6
+      #accordion.panel-group.m-bot20
+        .panel.panel-default
+          .panel-heading
+            %h4.panel-title
+              %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapseOne"}
+                Collapsible Group Item #1
+          #collapseOne.panel-collapse.collapse.in
+            .panel-body
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+        .panel.panel-default
+          .panel-heading
+            %h4.panel-title
+              %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapseTwo"}
+                Collapsible Group Item #2
+          #collapseTwo.panel-collapse.collapse
+            .panel-body
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+        .panel.panel-default
+          .panel-heading
+            %h4.panel-title
+              %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapseThree"}
+                Collapsible Group Item #3
+          #collapseThree.panel-collapse.collapse
+            .panel-body
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+    .col-lg-6
+      %section.panel
+        %header.panel-heading
+          Heading goes here
+          %span.tools.pull-right
+            %a.fa.fa-chevron-down{:href => "javascript:;"}
+            %a.fa.fa-times{:href => "javascript:;"}
+        .panel-body
+          %p
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+          %p
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor
+  .row
+    .col-lg-6
+      %section.panel
+        %header.panel-heading
+          Timeline
+          %span.tools.pull-right
+            %a.fa.fa-chevron-down{:href => "javascript:;"}
+            %a.fa.fa-times{:href => "javascript:;"}
+        .panel-body.profile-activity
+          %h5.pull-right 12 August 2013
+          .activity.terques
+            %span
+              %i.fa.fa-shopping-cart
+            .activity-desk
+              .panel
+                .panel-body
+                  .arrow
+                  %i.fa.fa-time
+                  %h4 10:45 AM
+                  %p Purchased new equipments for zonal office setup and stationaries.
+          .activity.alt.purple
+            %span
+              %i.fa.fa-rocket
+            .activity-desk
+              .panel
+                .panel-body
+                  .arrow-alt
+                  %i.fa.fa-time
+                  %h4 12:30 AM
+                  %p Lorem ipsum dolor sit amet consiquest dio
+          .activity.blue
+            %span
+              %i.fa.fa-bullhorn
+            .activity-desk
+              .panel
+                .panel-body
+                  .arrow
+                  %i.fa.fa-time
+                  %h4 10:45 AM
+                  %p Please note which location you will consider, or both. Reporting to the VP  you will be responsible for managing..
+          .activity.alt.green
+            %span
+              %i.fa.fa-beer
+            .activity-desk
+              .panel
+                .panel-body
+                  .arrow-alt
+                  %i.fa.fa-time
+                  %h4 12:30 AM
+                  %p Please note which location you will consider, or both.
+    .col-lg-6
+      %section.panel
+        %header.panel-heading
+          Chats
+          %span.tools.pull-right
+            %a.fa.fa-chevron-down{:href => "javascript:;"}
+            %a.fa.fa-times{:href => "javascript:;"}
+        .panel-body
+          .timeline-messages
+            / Comment
+            .msg-time-chat
+              %a.message-img{:href => "#"}
+                %img.avatar{:alt => "", :src => image_url("chat-avatar.jpg")}/
+              .message-body.msg-in
+                %span.arrow
+                .text
+                  %p.attribution
+                    %a{:href => "#"} Jhon Doe
+                    at 1:55pm, 13th April 2013
+                  %p Hello, How are you brother?
+            / /comment
+            / Comment
+            .msg-time-chat
+              %a.message-img{:href => "#"}
+                %img.avatar{:alt => "", :src => image_url("chat-avatar2.jpg")}/
+              .message-body.msg-out
+                %span.arrow
+                .text
+                  %p.attribution
+                    %a{:href => "#"} Jonathan Smith
+                    at 2:01pm, 13th April 2013
+                  %p I'm Fine, Thank you. What about you? How is going on?
+            / /comment
+            / Comment
+            .msg-time-chat
+              %a.message-img{:href => "#"}
+                %img.avatar{:alt => "", :src => image_url("chat-avatar.jpg")}/
+              .message-body.msg-in
+                %span.arrow
+                .text
+                  %p.attribution
+                    %a{:href => "#"} Jhon Doe
+                    at 2:03pm, 13th April 2013
+                  %p Yeah I'm fine too. Everything is going fine here.
+            / /comment
+            / Comment
+            .msg-time-chat
+              %a.message-img{:href => "#"}
+                %img.avatar{:alt => "", :src => image_url("chat-avatar2.jpg")}/
+              .message-body.msg-out
+                %span.arrow
+                .text
+                  %p.attribution
+                    %a{:href => "#"} Jonathan Smith
+                    at 2:05pm, 13th April 2013
+                  %p well good to know that. anyway how much time you need to done your task?
+            / /comment
+            / Comment
+            .msg-time-chat
+              %a.message-img{:href => "#"}
+                %img.avatar{:alt => "", :src => image_url("chat-avatar.jpg")}/
+              .message-body.msg-in
+                %span.arrow
+                .text
+                  %p.attribution
+                    %a{:href => "#"} Jhon Doe
+                    at 1:55pm, 13th April 2013
+                  %p Hello, How are you brother?
+            / /comment
+          .chat-form
+            .input-cont
+              %input.form-control.col-lg-12{:placeholder => "Type a message here...", :type => "text"}/
+            .form-group
+              .pull-right.chat-features
+                %a{:href => "javascript:;"}
+                  %i.fa.fa-camera
+                %a{:href => "javascript:;"}
+                  %i.fa.fa-link
+                %a.btn.btn-danger{:href => "javascript:;"} Send
+  / page end

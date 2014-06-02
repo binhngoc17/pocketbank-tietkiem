@@ -1,0 +1,15 @@
+%section.panel
+  %header.panel-heading
+    User
+  .panel-body
+    .form
+      = simple_form_for [:admin, @user], :html => { :class => "form-horizontal tasi-form" } do |f|
+        = f.input :email
+        = f.input :password
+        = f.input :password_confirmation
+        = f.input :name
+        = f.input :phone
+        = f.association :province, :include_blank => false
+        = f.input :avatar
+        = f.input :role, :include_blank => false
+        = f.button :submit, :class => "btn-danger"
