@@ -5,7 +5,7 @@ PocketBank application - Information website for various finance-related product
 
 ________________________
 
-##Setup
+##Setup (On MacOS)
 
 To run the application locally, please follow these steps:
 
