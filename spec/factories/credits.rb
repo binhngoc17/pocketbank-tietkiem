@@ -2,6 +2,10 @@
 
 FactoryGirl.define do
   factory :credit do
+    name "MyString"
+    link "MyString"
+    image "MyString"
+    primary_card_annual_fee 1.5
     reward_point "MyString"
     reward_card false
     cash_back_rate 1.5
@@ -12,5 +16,6 @@ FactoryGirl.define do
     expiry_period 1
     late_charge "MyString"
     cash_advance_fee 1.5
+    currency_exchange_fee 1.5
   end
 end
