@@ -17,6 +17,12 @@ source $(rvm 2.1.1 do rvm env —path)
 # Setup PostGres Database using HomeBrew (For MacOS). Please refer to this link: 
 http://www.moncefbelyamani.com/how-to-install-postgresql-on-a-mac-with-homebrew-and-lunchy/
 
+# After the DB has been created
+createdb <db_name>
+psql <db_name>
+
+# Create users and other relevant DBs for testing, etc
+
 # Install all the Gem
 bundle install
 
@@ -61,6 +67,9 @@ bundle exec rspec spec
 bundle exec rspec spec/models/credit_spec.rb
 
 ```
+
+Development guides:
+1. Use zeus for fast Ruby command line
 ________________________
 
 License
