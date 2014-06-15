@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140530132702) do
+ActiveRecord::Schema.define(version: 20140615101502) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,27 @@ ActiveRecord::Schema.define(version: 20140530132702) do
   end
 
   add_index "debits", ["withdrawal_limit"], name: "index_debits_on_withdrawal_limit", using: :btree
+
+  create_table "locations", force: true do |t|
+    t.integer  "provider_id"
+    t.string   "address"
+    t.string   "service_time"
+    t.float    "lng"
+    t.float    "lat"
+    t.string   "street_number"
+    t.string   "local_political"
+    t.string   "sublocality_political"
+    t.string   "route"
+    t.string   "country_political"
+    t.string   "administrative_area_level_1_political"
+    t.string   "administrative_area_level_2_political"
+    t.string   "name"
+    t.string   "type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "locations", ["provider_id"], name: "index_locations_on_provider_id", using: :btree
 
   create_table "products", force: true do |t|
     t.integer  "as_product_id"

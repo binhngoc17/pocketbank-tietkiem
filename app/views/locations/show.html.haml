@@ -1,0 +1,48 @@
+%p#notice= notice
+
+%p
+  %b Provider:
+  = @location.provider
+%p
+  %b Address:
+  = @location.address
+%p
+  %b Service time:
+  = @location.service_time
+%p
+  %b Lng:
+  = @location.lng
+%p
+  %b Lat:
+  = @location.lat
+%p
+  %b Street number:
+  = @location.street_number
+%p
+  %b Local political:
+  = @location.local_political
+%p
+  %b Sublocality political:
+  = @location.sublocality_political
+%p
+  %b Route:
+  = @location.route
+%p
+  %b Country political:
+  = @location.country_political
+%p
+  %b Administrative area level 1 political:
+  = @location.administrative_area_level_1_political
+%p
+  %b Administrative area level 2 political:
+  = @location.administrative_area_level_2_political
+%p
+  %b Name:
+  = @location.name
+%p
+  %b Type:
+  = @location.type
+
+= link_to 'Edit', edit_location_path(@location)
+\|
+= link_to 'Back', locations_path
