@@ -33,4 +33,8 @@ PocBank::Application.routes.draw do
   end
 
   get 'providers/:id/redirect' => "providers#redirect", :as => :provider_redirect
+
+  resources :locations do
+    collection { post :import}
+  end
 end

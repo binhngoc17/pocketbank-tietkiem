@@ -19,6 +19,10 @@ gem 'will_paginate'
 gem 'acts_as_relation', '~> 1.0'
 gem 'chosen-rails'
 gem "ransack", github: "activerecord-hackery/ransack", branch: "rails-4"
+gem 'rails-perftest'
+gem 'roo'
+gem 'iconv'
+gem 'country-select'
 
 group :development do
   gem 'better_errors'
@@ -32,9 +36,11 @@ group :development do
   gem 'rb-fchange', :require=>false
   gem 'rb-fsevent', :require=>false
   gem 'rb-inotify', :require=>false
+  gem 'sql_queries_count'
 end
 
 group :development, :test do
+  gem 'debugger'
   gem 'factory_girl_rails'
   gem 'rspec-rails'
   gem 'pry-rails'

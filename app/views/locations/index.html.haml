@@ -1,0 +1,51 @@
+%h1 Listing locations
+
+%table
+  %tr
+    %th Provider
+    %th Address
+    %th Service time
+    %th Lng
+    %th Lat
+    %th Street number
+    %th Local political
+    %th Sublocality political
+    %th Route
+    %th Country political
+    %th Administrative area level 1 political
+    %th Administrative area level 2 political
+    %th Name
+    %th Type
+    %th
+    %th
+    %th
+
+  - @locations.each do |location|
+    %tr
+      %td= location.provider
+      %td= location.address
+      %td= location.service_time
+      %td= location.lng
+      %td= location.lat
+      %td= location.street_number
+      %td= location.local_political
+      %td= location.sublocality_political
+      %td= location.route
+      %td= location.country_political
+      %td= location.administrative_area_level_1_political
+      %td= location.administrative_area_level_2_political
+      %td= location.name
+      %td= location.type
+      %td= link_to 'Show', location
+      %td= link_to 'Edit', edit_location_path(location)
+      %td= link_to 'Destroy', location, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Location', new_location_path
+
+%h2 Import Locations
+
+= form_tag import_locations_path, :multipart => true do
+  = file_field_tag :file
+  = submit_tag "Import"
